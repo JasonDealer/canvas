@@ -79,3 +79,11 @@
 .draggable {
     cursor: pointer;
   }
+
+.red {
+    background: red;
+}
+
+.active {
+    background: red;
+}

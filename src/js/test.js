@@ -1,53 +1,49 @@
-var ball = document.getElementById('square');
-let copy = document.createElement('div');
-let figures = document.querySelector('.figures'); 
+var small = document.getElementById('square');
+var big = document.getElementById('canvas');
+//* флаг перетаскивания
+var isDrag = false;
+//* ограничения, за которые нельзя вытащить small
+var limits = {
+  top: big.offsetTop,
+  right: big.offsetWidth + big.offsetLeft - small.offsetWidth,
+  bottom: big.offsetHeight + big.offsetTop - small.offsetHeight,
+  left: big.offsetLeft
+};
 
-function drag(i) {
-  i.onmousedown = function(e) {
+//* вкл/выкл режим перетаскивания
+small.onmousedown = function(e) {
+  isDrag = true;
+}
+document.onmouseup = function() {
+  isDrag = false;
+}
+document.onmousemove = function(e) {
+  if (isDrag) {
+    move(e);
+  }
+}
 
-    var coords = getCoords(i);
-    var shiftX = e.pageX - coords.left;
-    var shiftY = e.pageY - coords.top;
-  
-    i.style.position = 'absolute';
-    document.body.appendChild(i);
-    moveAt(e);
-  
-    i.style.zIndex = 1000; // над другими элементами
-  
-    function moveAt(e) {
-      i.style.left = e.pageX - shiftX + 'px';
-      i.style.top = e.pageY - shiftY + 'px';
-    }
-  
-    document.onmousemove = function(e) {
-      moveAt(e);
-    };
-  
-    i.onmouseup = function() {
-      document.onmousemove = null;
-      i.onmouseup = null;
-    };
-  
+//* вычисление координат
+function move(e) {
+  var newLocation = {
+    x: limits.left,
+    y: limits.top
   };
-  i.ondragstart = function() {
-    return false;
-  };
-  function getCoords(elem) {   // кроме IE8-
-    var box = elem.getBoundingClientRect();
-    return {
-      top: box.top + pageYOffset,
-      left: box.left + pageXOffset
-    };
+  if (e.pageX > limits.right) {
+    newLocation.x = limits.right;
+  } else if (e.pageX > limits.left) {
+    newLocation.x = e.pageX;
+  }
+  if (e.pageY > limits.bottom) {
+    newLocation.y = limits.bottom;
+  } else if (e.pageY > limits.top) {
+    newLocation.y = e.pageY;
+  }
+  relocate(newLocation);
 }
 
+//* размещение small
+function relocate(newLocation) {
+  small.style.left = newLocation.x + 'px';
+  small.style.top = newLocation.y + 'px';
 }
-
-function create() {
-              copy.classList.add("square");
-              copy.classList.add("figure");
-              copy.classList.add("draggable");
-              figures.appendChild(copy);
-}
-
-drag(ball, create());

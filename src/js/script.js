@@ -1,6 +1,9 @@
 let square = document.querySelector('.square');
 let round = document.querySelector('.round');
-let figures = document.querySelector('.figures');  
+let canvas = document.querySelector('.canvas');
+let wrapper = document.querySelector('.wrapper');
+let figures = document.querySelector('.figures');
+let massFig = document.querySelectorAll(".figure");
   
 document.onmousedown = event => {
     
@@ -63,3 +66,16 @@ document.onmousedown = event => {
             drag(event.target);
         } 
     };
+
+    /////////////
+
+    document.addEventListener('click', function(e) {
+        const items = document.querySelectorAll('.draggable');
+        const target = e.target;
+      Array.from(items).forEach(item => {
+          item.classList.remove('active');
+      });
+      if(event.target.classList.contains('draggable')) {
+        event.target.classList.add('active');
+      }
+    });
