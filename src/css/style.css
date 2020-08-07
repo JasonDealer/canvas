@@ -67,9 +67,9 @@
 
 
 .round {
-    left: 110px;
-    top: 150px;
-    position: fixed;
+    left: 80px;
+    top: 100px;
+    position: absolute;
     height: 150px;
     width: 150px;
     border-radius: 50%;

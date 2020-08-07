@@ -1,5 +1,5 @@
-let square = document.querySelector('.square');
 let round = document.querySelector('.round');
+let square = document.querySelector('.square');
 let figures = document.querySelector('.figures');  
   
 document.onmousedown = event => {
@@ -26,23 +26,11 @@ document.onmousedown = event => {
                 moveAt(e);
             };    
         
-
-            function copeing(i) {
-                i.onmouseup = function() {
-                    let copy = document.createElement('div');
-                    if(element.classList.contains('square')) {
-                        copy.classList.add('square');
-                    }else if(element.classList.contains('round')) {
-                        copy.classList.add('round');
-                    }
-                    copy.classList.add("figure");
-                    copy.classList.add("draggable");
-                    figures.appendChild(copy);
-                    document.onmousemove = null;
-                    element.onmouseup = null;
-                };
-            }
-            copeing(element);
+            element.onmouseup = function() {
+                document.onmousemove = null;
+                element.onmouseup = null;
+            };
+        
         };
         
         function getCoords(elem) {   // кроме IE8-
@@ -52,14 +40,17 @@ document.onmousedown = event => {
                 left: box.left + pageXOffset
             };
         }
-        element.ondragstart = function() {
+    }
+
+    function dragOn(i) {
+        i.ondragstart = function() {
             return false;
         };
     }
 
     if (event.target.classList.contains('square')) {
-            drag(event.target);
-        }else if(event.target.classList.contains('round')) {
-            drag(event.target);
-        } 
+            dragOn(event.target, drag(event.target));
+        }
     };
+
+
