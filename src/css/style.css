@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    position: relative;
+    margin: 50px auto;
+    width: 1300px;
+    height: 800px;
+    border: 4px solid grey;
+}
+
+.figures {
+    width: 300px;
+    height: 800px;
+    border-right: 4px solid grey;
+}
+
+.title_fig {
+    padding-top: 10px;
+    width: 300px;
+    height: 40px;
+    border-bottom: 4px solid grey;
+    text-align: center;
+    background: rgb(53, 53, 53);
+    color: white;
+}
+
+.canvas {
+    position: relative;
+    width: 1000px;
+    height: 800px;
+}
+
+.title_can {
+    position: absolute;
+    right: 0;
+    padding-top: 10px;
+    width: 996px;
+    height: 40px;
+    border-bottom: 4px solid grey;
+    text-align: center;
+    background: rgb(53, 53, 53);
+    color: white;
+}
+
+.square {
+    margin: 50px auto;
+    height: 150px;
+    width: 150px;
+    background-color: aqua;
+}
+
+.round {
+    margin: 20px auto;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: blue;
+}
