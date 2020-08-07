@@ -48,16 +48,34 @@
 }
 
 .square {
-    margin: 50px auto;
+    position: absolute;
+    left: 80px;
+    top: 350px;
     height: 150px;
     width: 150px;
     background-color: aqua;
 }
 
+.squareCopy {
+    position: absolute;
+    left: 80px;
+    top: 350px;
+    height: 150px;
+    width: 150px;
+    background-color: aqua;
+}
+
+
 .round {
-    margin: 20px auto;
+    left: 110px;
+    top: 150px;
+    position: fixed;
     height: 150px;
     width: 150px;
     border-radius: 50%;
     background-color: blue;
 }
+
+.draggable {
+    cursor: pointer;
+  }
