@@ -85,4 +85,9 @@
 
 .active {
     border: 4px solid rgb(255, 0, 0);
+    
+}
+
+.overflow {
+    z-index: 10000;
 }

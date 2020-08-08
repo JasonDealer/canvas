@@ -13,10 +13,10 @@ let square = document.querySelector('.square'),
 
 function setActions(element) {
     let limits = {
-      top: canvas.offsetTop,
-      right: canvas.offsetWidth + canvas.offsetLeft - element.offsetWidth,
-      bottom: canvas.offsetHeight + canvas.offsetTop - element.offsetHeight,
-      left: canvas.offsetLeft
+      top: canvas.offsetTop + 125,
+      right: canvas.offsetWidth + canvas.offsetLeft - element.offsetWidth / 2,
+      bottom: canvas.offsetHeight + canvas.offsetTop - element.offsetHeight / 2,
+      left: canvas.offsetLeft - 150
     };
 element.onmousedown = function(e) {
 
@@ -33,29 +33,29 @@ if (element.classList.contains('square')) {
 /* document.body.appendChild(square); */
 moveAt(e);
 
-element.style.zIndex = 1000; // над другими элементами
+element.style.zIndex = 20; // над другими элементами
 
 function moveAt(e) {
   element.style.left = e.pageX - shiftX + 'px';
   element.style.top = e.pageY - shiftY + 'px';
-  var newLocation = {
-    x: limits.left + 50 + 'px',
-    y: limits.top + 50 + 'px'
+  let newLocation = {
+    x: limits.left,
+    y: limits.top
   };
   if (e.pageX > limits.right) {
     newLocation.x = limits.right;
   } else if (e.pageX > limits.left) {
-    newLocation.x = e.pageX - element.offsetWidth / 2;
+    newLocation.x = e.pageX;
   }
   if (e.pageY > limits.bottom) {
     newLocation.y = limits.bottom;
   } else if (e.pageY > limits.top) {
-    newLocation.y = e.pageY - element.offsetHeight / 2;
+    newLocation.y = e.pageY;
   }
   relocate(newLocation);
   function relocate(newLocation) {
-    element.style.left = newLocation.x + 'px';
-    element.style.top = newLocation.y + 'px';
+    element.style.left = newLocation.x - element.offsetWidth / 2 + 'px'; // попробовать отступ сюда тыкнуть
+    element.style.top = newLocation.y - element.offsetHeight /2 + 'px'; // попробовать отступ сюда тыкнуть
   }
 }
 
@@ -104,9 +104,11 @@ document.addEventListener('click', function(e) {
     const target = e.target;
   Array.from(items).forEach(item => {
       item.classList.remove('active');
+      item.style.zIndex = 5;
   });
   if(event.target.classList.contains('figure')) {
     event.target.classList.add('active');
+    event.target.style.zIndex = 200;
   } else if (event.target == first){
     first.classList.add('active');
   }
