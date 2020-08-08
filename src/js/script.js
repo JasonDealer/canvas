@@ -71,8 +71,8 @@ function setActions(element) {
 			}
 			relocate(newLocation);
 			function relocate(newLocation) {
-				element.style.left = newLocation.x - shiftX + 'px';
-				element.style.top = newLocation.y - shiftY + 'px';
+				element.style.left = newLocation.x - element.offsetWidth / 2 + 'px';
+				element.style.top = newLocation.y - element.offsetHeight / 2 + 'px';
 			}
 		}
 
