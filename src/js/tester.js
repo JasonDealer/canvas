@@ -1,3 +1,5 @@
+//Без границ, все остальное работает (за исключением выделения первого элемента)
+
 let square = document.querySelector('.square');
 let round = document.querySelector('.round');
 let canvas = document.querySelector('.canvas');

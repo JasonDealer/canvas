@@ -1,3 +1,5 @@
+//Границы практически работают проблемы с позиционированием
+
 let square = document.querySelector('.square'),
     round = document.querySelector('.round'),
     canvas = document.querySelector('.canvas'),
