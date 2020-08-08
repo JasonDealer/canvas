@@ -44,12 +44,12 @@ function setActions(element) {
 				x: limits.left,
 				y: limits.top
 			};
-			if (e.pageX > limits.right && e.pageX < limits.right + 75) {
+			if (e.pageX > limits.right && e.pageX < limits.right + 200) {
 				newLocation.x = limits.right;
 			} else if (e.pageX > limits.left) {
 				newLocation.x = e.pageX;
 			}
-			if (e.pageY > limits.bottom && e.pageY < limits.bottom + 75) {
+			if (e.pageY > limits.bottom && e.pageY < limits.bottom + 100) {
 				newLocation.y = limits.bottom;
 			} else if (e.pageY > limits.top) {
 				newLocation.y = e.pageY;
@@ -66,9 +66,9 @@ function setActions(element) {
 			moveAt(e);
 		};
 
-		function setActive(e) {
+/* 		function setActive(e) {
 		e.classList.add('active');
-		}
+		} */
 
 		element.onmouseup = function() {
 			let copy = document.createElement('div');
@@ -90,7 +90,6 @@ function setActions(element) {
 			} else if(event.clientY > limits.bottom + 5) {
 				figures.removeChild(element);
 			}
-
 			document.onmousemove = null;
 			copy.onmouseup = null;
 		};
@@ -103,30 +102,54 @@ function setActions(element) {
 }
 setActions(square);
 setActions(round);
-function getCoords(elem) {
+
+
+function getCoords(elem) {									//проблема с первыми элементами скорее всего здесь
 	let box = elem.getBoundingClientRect();
+//////////
+
+/* 	massFig.forEach(item => {								//выделение снимается, только с вторых эл-тов, а при нажатии на остальные, с первого не снимается
+		item.classList.remove('active');
+		item.style.zIndex = 5;
+	});
+	if(elem.classList.contains('draggable')) {
+		elem.classList.add('active');
+		elem.style.zIndex = 200;
+	} */
+
+///////////
+
+/* 	if (event.clientX > 1100 + 5) {						//с этим кодом выделение работает (правильно)?! но на первые элементы применяется только за пределами канваса + зона удаления смещается
+		figures.removeChild(elem);
+	} else if(event.clientY > 1100 + 5) {
+		figures.removeChild(elem);
+	}
+ */
+//////////
 	return {
 		top: box.top + pageYOffset,
 		left: box.left + pageXOffset
 	};
-
 }
 
+//назначение класса активности
+
 document.addEventListener('click', function(e) {
-  	const items = document.querySelectorAll('.draggable');
+	const items = document.querySelectorAll('.draggable');
 	Array.from(items).forEach(item => {
-    	item.classList.remove('active');
-    	item.style.zIndex = 5;
+		item.classList.remove('active');
+		item.style.zIndex = 5;
 	});
+	
 	if(event.target.classList.contains('draggable')) {
 		event.target.classList.add('active');
 		event.target.style.zIndex = 200;
 	}
 });
 
-function disableActive(e) {
+/* function disableActive(e) {
   	e.classList.remove('active');
-}
+} */
 
 /* let elt = document.getElementById('first');
 
