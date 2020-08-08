@@ -45,12 +45,12 @@ function moveAt(e) {
   if (e.pageX > limits.right) {
     newLocation.x = limits.right;
   } else if (e.pageX > limits.left) {
-    newLocation.x = e.pageX;
+    newLocation.x = e.pageX - element.offsetWidth / 2;
   }
   if (e.pageY > limits.bottom) {
     newLocation.y = limits.bottom;
   } else if (e.pageY > limits.top) {
-    newLocation.y = e.pageY;
+    newLocation.y = e.pageY - element.offsetHeight / 2;
   }
   relocate(newLocation);
   function relocate(newLocation) {
