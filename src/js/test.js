@@ -85,9 +85,9 @@ function setActions(element) {
 			figures.append(copy);
 			setActions(copy);
 
-			if (event.clientX > limits.right) {
+			if (event.clientX > limits.right + 5) {
 				figures.removeChild(element);
-			} else if(event.clientY > limits.bottom) {
+			} else if(event.clientY > limits.bottom + 5) {
 				figures.removeChild(element);
 			}
 
