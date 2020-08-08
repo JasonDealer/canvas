@@ -23,11 +23,11 @@ function setActions(element) {
 		let shiftY = e.pageY - coords.top;
 
 		element.style.position = 'absolute';
-		if (element.classList.contains('square')) {
+/* 		if (element.classList.contains('square')) {
 			document.body.appendChild(square);
 		} else if (element.classList.contains('round')) {
 			document.body.appendChild(round);
-		}
+		} */
 	/* document.body.appendChild(square); */
 		moveAt(e);
 
@@ -118,11 +118,7 @@ function getCoords(elem) {									//проблема с первыми элем
 
 ///////////
 
-	if (event.clientX > 1100 + 5) {						//с этим кодом выделение работает (правильно)?! но на первые элементы применяется только за пределами канваса
-		figures.removeChild(elem);
-	} else if(event.clientY > 1100 + 5) {
-		figures.removeChild(elem);
-	}
+
 
 //////////
 	return {

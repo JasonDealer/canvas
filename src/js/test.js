@@ -105,7 +105,7 @@ setActions(round);
 
 
 function getCoords(elem) {									//проблема с первыми элементами скорее всего здесь
-	let box = elem.getBoundingClientRect();
+	let box = elem.getBoundingClientRect();   				//получаем координаты эл-та
 //////////
 
 /* 	massFig.forEach(item => {								//выделение снимается, только с вторых эл-тов, а при нажатии на остальные, с первого не снимается
