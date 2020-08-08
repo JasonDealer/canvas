@@ -5,6 +5,7 @@ let wrapper = document.querySelector('.wrapper');
 let figures = document.querySelector('.figures');
 let massFig = document.querySelectorAll(".figure");
 let first = document.getElementById('first');
+let active = document.querySelector('.active');
 
 
 function setActions(element) {
@@ -28,6 +29,13 @@ element.style.zIndex = 1000; // над другими элементами
 function moveAt(e) {
   element.style.left = e.pageX - shiftX + 'px';
   element.style.top = e.pageY - shiftY + 'px';
+  if (element.style.top >= 655 + 'px') {
+      element.style.top = 655 + 'px';
+      e.onmouseup = function() {
+        document.onmousemove = null;
+        e.onmouseup = null;
+      };
+  }
 }
 
 document.onmousemove = function(e) {
@@ -84,9 +92,8 @@ document.addEventListener('click', function(e) {
 });
 
 document.addEventListener('keyup', function(event) {
-  let active = document.querySelector('.active');
   if (event.keyCode == 46) {
-    var oldChild = figures.removeChild(active);
+    let oldChild = figures.removeChild(active);
     figures.removeChild(active);
   }
 });

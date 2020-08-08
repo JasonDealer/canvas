@@ -32,6 +32,7 @@ document.onmousedown = event => {
 
             function copeing(i) {
                 i.onmouseup = function() {
+                    
                     let copy = document.createElement('div');
                     if(element.classList.contains('square')) {
                         copy.classList.add('square');
