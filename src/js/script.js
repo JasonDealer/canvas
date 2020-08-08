@@ -56,8 +56,7 @@ function setActions(element) {
 			relocate(newLocation);
 			function relocate(newLocation) {
 				element.style.left = newLocation.x - element.offsetWidth / 2 + 'px';
-				element.style.top = newLocation.y - element.offsetHeight /2 + 'px';
-				
+				element.style.top = newLocation.y - element.offsetHeight / 2 + 'px';
 			}
 		}
 

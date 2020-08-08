@@ -22,6 +22,22 @@ function setActions(element) {
 		let shiftX = e.pageX - coords.left;
 		let shiftY = e.pageY - coords.top;
 
+		if(element.style.left < 150 + 'px') {
+			let copy = document.createElement('div');
+		if (element.classList.contains('square')) {
+			copy.classList.add('square');
+			element.classList.add('copy');
+		} else if (element.classList.contains('round')) {
+			copy.classList.add('round');
+			element.classList.add('copy');
+		}
+		copy.classList.add("draggable");
+		copy.classList.add("figure");
+		copy.classList.add("copy");
+		figures.append(copy);
+		setActions(copy);
+		}
+
 		element.style.position = 'absolute';
 /* 		if (element.classList.contains('square')) {
 			document.body.appendChild(square);
@@ -55,9 +71,8 @@ function setActions(element) {
 			}
 			relocate(newLocation);
 			function relocate(newLocation) {
-				element.style.left = newLocation.x - element.offsetWidth / 2 + 'px'; // попробовать отступ сюда тыкнуть
-				element.style.top = newLocation.y - element.offsetHeight /2 + 'px'; // попробовать отступ сюда тыкнуть
-				
+				element.style.left = newLocation.x - element.offsetWidth / 2 + 'px';
+				element.style.top = newLocation.y - element.offsetHeight / 2 + 'px';
 			}
 		}
 
@@ -70,19 +85,6 @@ function setActions(element) {
 		} */
 
 		element.onmouseup = function() {
-			let copy = document.createElement('div');
-			if (element.classList.contains('square')) {
-				copy.classList.add('square');
-				element.classList.add('copy');
-			} else if (element.classList.contains('round')) {
-				copy.classList.add('round');
-				element.classList.add('copy');
-			}
-			copy.classList.add("draggable");
-			copy.classList.add("figure");
-			copy.classList.add("copy");
-			figures.append(copy);
-			setActions(copy);
 
 			if (event.clientX > limits.right + 5) {
 				figures.removeChild(element);
@@ -90,7 +92,7 @@ function setActions(element) {
 				figures.removeChild(element);
 			}
 			document.onmousemove = null;
-			copy.onmouseup = null;
+			element.onmouseup = null;
 		};
 
 	};
@@ -103,11 +105,11 @@ setActions(square);
 setActions(round);
 
 
-function getCoords(elem) {									//проблема с первыми элементами скорее всего здесь
+function getCoords(elem) {									
 	let box = elem.getBoundingClientRect();
 //////////
 
-/* 	massFig.forEach(item => {								//выделение снимается, только с вторых эл-тов, а при нажатии на остальные, с первого не снимается
+/* 	massFig.forEach(item => {								
 		item.classList.remove('active');
 		item.style.zIndex = 5;
 	});
