@@ -68,7 +68,7 @@ document.onmousedown = event => {
     };
 
     /////////////
-
+    
     document.addEventListener('click', function(e) {
         const items = document.querySelectorAll('.draggable');
         const target = e.target;
