@@ -6,8 +6,7 @@ let square = document.querySelector('.square'),
     wrapper = document.querySelector('.wrapper'),
     figures = document.querySelector('.figures'),
     massFig = document.querySelectorAll(".figure"),
-    first = document.getElementById('first'),
-    active = document.querySelector('.active');
+    first = document.getElementById('first');
 
 
 
@@ -115,6 +114,7 @@ document.addEventListener('click', function(e) {
 });
 
 document.addEventListener('keyup', function(event) {
+  let active = document.querySelector('.active');
   if (event.keyCode == 46) {
     let oldChild = figures.removeChild(active);
     figures.removeChild(active);
